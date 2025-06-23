@@ -65,6 +65,24 @@
           transform: translateY(0);
         }
       }
+      .upload-button {
+        cursor: pointer;
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        padding: 11px 22px;
+        font-size: 1.05rem;
+        outline: none;
+        transition:
+          background 0.18s,
+          box-shadow 0.18s;
+        box-shadow: 0 2px 12px rgba(91, 156, 255, 0.08);
+      }
+      .upload-button:hover {
+        background: var(--primary-dark);
+      }
       #controls {
         display: flex;
         align-items: center;
@@ -97,6 +115,8 @@
         background: none;
         font-size: 1.04rem;
         color: var(--primary-dark);
+        visibility: hidden;
+        position: absolute;
       }
       #videoControls {
         margin-bottom: 12px;
@@ -123,12 +143,12 @@
       }
       .media-area {
         display: flex;
-        justify-content: center;
-        align-items: flex-end;
+        justify-content: flex-start;
+        align-items: flex-start;
         gap: 28px;
         width: 100%;
         margin-bottom: 16px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
       }
       video,
       canvas,
@@ -176,8 +196,20 @@
     <div id="main-card">
       <div id="controls">
         <button id="webcamBtn">Webcam</button>
-        <input type="file" id="imageInput" accept="image/*" />
-        <input type="file" id="videoInput" accept="video/*" />
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          style="display: none"
+        />
+        <label for="imageInput" class="upload-button">Seleccionar Imagen</label>
+        <input
+          type="file"
+          id="videoInput"
+          accept="video/*"
+          style="display: none"
+        />
+        <label for="videoInput" class="upload-button">Seleccionar Video</label>
       </div>
       <div id="videoControls" style="display: none">
         <button id="playBtn">Reproducir</button>
@@ -190,13 +222,12 @@
       </div>
     </div>
     <footer>
-      Proyecto académico BodyPix &bull; TensorFlow.js &bull; Demo por
+      Proyecto BodyPix
       <a
         href="https://github.com/facusbrr"
         target="_blank"
         style="color: #5b9cff; text-decoration: none"
-        >@facusbrr</a
-      >
+      ></a>
     </footer>
     <script src="main.js"></script>
   </body>
